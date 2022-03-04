@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabores</title>
+</head>
+<body>
+    <header>
+        <img src="ilc_white.png" alt="ilc_white" width="auto" height="200">
+        <h1>Bienvenido a I Love Chocolate</h1>
+    </header>
+
+    <nav>
+        <h2>Conoce nuestra página</h2>
+        <ul>
+            <li><a href="./index.html">Inicio</a></li>
+            <li><a href="./sabores.html">Sabores</a></li>
+        </ul>
+    </nav>
+
+    <form action="./shopping.html">
+        <fieldset>
+            <legend>Place your Order</legend>
+            <label for="nombre">Nombre:</label><br>
+            <input type="text" id="nombre"><br><br>
+
+            <label for="Phone">Teléfono:</label><br>
+            <input type="tel" name="tel" maxlength="10" id="phone"><br><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" name="email" id="email"><br><br>
+
+            <label for="specs">Especificaciones:</label><br>
+            <textarea name="specs" id="specs" cols="30" rows="5" style="resize: none;"></textarea><br><br>
+
+            <label for="flavors">Selecciona tus sabores:</label><br>
+            <input class="single-checkbox" type="checkbox" value="mantequillaChoco" id="mantequillaChoco">
+            <label for="mantequillaChoco">Mantequilla con chocolate</label>
+            <input class="single-checkbox" type="checkbox" value="chocoTradi" id="chocoTradi">
+            <label for="chocoTradi">Chocolate tradicional</label>
+            <input class="single-checkbox" type="checkbox" value="marmol" id="marmol">
+            <label for="marmol">Mármol</label><br><br>
+            <input class="single-checkbox" type="checkbox" value="domino" id="domino">
+            <label for="domino">Dominó</label>
+            <input class="single-checkbox" type="checkbox" value="cocoMere" id="cocoMere">
+            <label for="cocoMere">Coco con merengue</label>
+            <input class="single-checkbox" type="checkbox" value="chocoCoco" id="chocoCoco">
+            <label for="chocoCoco">Choco coco</label><br><br>
+            
+            <input type="submit" value="Enviar">
+        </fieldset>
+    </form>
+    <br><br>
+    <footer>
+        Horarios: Lunes a Sábado 8:00 A.M - 8:00 P.M<br>
+        Dirección: Maestros Veracruzanos # 106<br>
+        Contact: 2282909881<br>
+        &copy; 2022 I Love Chocolate. All rights reserved.
+    </footer>
+</body>
+</html>
