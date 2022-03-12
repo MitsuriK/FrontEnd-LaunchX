@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Vaccine Campaign</title>
+    
+</head>
+<style>
+    @font-face {
+        font-family: 'Neometric';
+        src: url(NeometricMedium.ttf);
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    .content{
+        width: 89.5%;
+        height: 450px;
+        margin: 110px;
+        /* background: green; */
+        display: flex;
+        justify-content: center;
+    }
+
+    .box{
+        width: 360px;
+        height: 450px;
+        margin-right: 35px;
+        border-radius: 5%;
+        border: 5px solid #fafaff;
+    }
+    
+    .box .cajita{
+        width: 70px;
+        height: 70px;
+        margin-top  : 42px;
+        margin-left: 42px;
+        align-items: center;
+        align-content: center;
+        text-align: center;
+        background-color: #f1f5ff;
+        border-radius: 20%;
+    }
+    
+    .box .iconos{
+        margin-top: 15px;
+    }
+    
+    .box h3{
+        margin-top: 42px;
+        margin-left: 42px;
+        text-align: left;
+        font-size: 25px;
+        font-weight: bolder;
+        font-family: "Ubuntu", sans-serif;
+        color: #1f3e72;
+    }
+
+    .box p{
+        margin-top: 25px;
+        margin-left: 42px;
+        margin-right: 42px;
+        text-align: left;
+        font-size: 18px;
+        font-weight: 300;
+        font-family: "Neometric";
+        color: #6d7b93;
+    }
+
+    /* Style the button that is used to open and close the collapsible content */
+/* Style the buttons that are used to open and close the accordion panel */
+    .accordion {
+        background-color: #fff;
+        color: #1f3e72;
+        cursor: pointer;
+        margin-left: 100px;
+        width: 450px;
+        height: 65px;
+        text-align: left;
+        font-weight: bolder;
+        border: 3px solid #fafaff;
+        border-radius: 5%;
+        transition: 0.4s;
+    }
+
+    .panel p{
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+    .active, .accordion:hover {
+        background-color: #fff;
+    }
+
+    .accordion:after {
+        content: '\02795'; /* Unicode character for "plus" sign (+) */
+        font-size: 13px;
+        color: #3252d0;
+        float: right;
+        text-align: center;
+        padding-right: 20px;
+    }
+
+    .active:after {
+        content: "\2796"; /* Unicode character for "minus" sign (-) */
+        color: #3252d0;
+    }
+
+    .accordion .cajaizquierda{
+        width: 40px;
+        height: 40px;
+        /* margin-left: 40px; */
+        background-color: #0048ff;
+    }
+
+/* Style the accordion panel. Note: hidden by default */
+    .panel {
+        margin-left: 130px;
+        padding-left: 10px;
+        background-color: white;
+        display: none;
+        overflow: hidden;
+    }
+
+    body {
+        background-color: #ffffff;
+    }
+
+    header {
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0.75);
+        transition: 0.6s;
+        padding: 25px 110px;
+        z-index: 50;
+    }
+
+    header.sticky {
+        padding: 5px 120px;
+    }
+
+    header .title {
+        color: #405fd7;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bolder;
+        font-size: 30px;
+        text-decoration: none;
+    }
+
+    header ul {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    header ul li {
+        position: relative;
+        list-style: none;
+    }
+
+    header ul li a {
+        position: relative;
+        top: 10px;
+        margin: 0px 25px;
+        text-decoration: none;
+        color: #6d7b93;
+        font-family: 'Fredoka', sans-serif;
+        font-weight: bolder;
+        font-size: 18px;
+        transition: 0.6s;
+    }
+
+    .frame {
+        width: 90%;
+        margin: 40px auto;
+        text-align: center;
+    }
+    button {
+        margin: 20px;
+    }
+
+    .custom-btn {
+        width: 130px;
+        height: 40px;
+        color: #fff;
+        border-radius: 5px;
+        padding: 7px 15px;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 500;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+        7px 7px 20px 0px rgba(0,0,0,.1),
+        4px 4px 5px 0px rgba(0,0,0,.1);
+        outline: none;
+    }
+
+    .custom-btn-1 {
+        width: 200px;
+        height: 50px;
+        margin-left: 16%;
+        margin-top: 10%;
+        color: #fff;
+        border-radius: 5px;
+        padding: 10px 15px;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 500;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+        7px 7px 20px 0px rgba(0,0,0,.1),
+        4px 4px 5px 0px rgba(0,0,0,.1);
+        outline: none;
+    }
+
+    .btn-1 {
+        background: rgb(22,9,240);
+        background: linear-gradient(0deg, rgba(22,9,240,1) 0%, rgba(49,110,244,1) 100%);
+        color: #fff;
+        border: none;
+        transition: all 0.3s ease;
+        overflow: hidden;
+    }
+
+    .btn-1:after {
+        position: absolute;
+        content: " ";
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        transition: all 0.3s ease;
+        -webkit-transform: scale(.1);
+        transform: scale(.1);
+    }
+    .btn-1:hover {
+        color: #fff;
+        border: none;
+        background: transparent;
+    }
+    .btn-1:hover:after {
+        background: rgb(0,3,255);
+        background: linear-gradient(0deg, rgba(2,126,251,1) 0%,  rgba(0,3,255,1)100%);
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+
+    .btn-2 {
+        background: rgb(6,14,131);
+        background: linear-gradient(0deg, rgba(6,14,131,1) 0%, rgba(12,25,180,1) 100%);
+        border: none;
+    }
+    .btn-2:hover {
+        background: rgb(0,3,255);
+        background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
+    }
+
+    .menu-icon {
+        display: none;
+    }
+    
+    .btn {
+        box-shadow: 0px 3px 0px 0px rgba(144, 163, 227, 0.2)
+    }
+
+    .ct {
+        width: 100%;
+        height: 1000px;
+    }
+    .second {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background: rgb(10,150,229);
+        background: linear-gradient(90deg, rgba(10,150,229,1) 0%, rgba(40,116,220,1) 48%, rgba(51,100,219,1) 100%);
+        height: 125vh;
+    }
+
+    .marginhelper{
+        margin-top: 195px;
+    }
+
+    .contentcontactbox{
+        margin-left: 100px;
+        margin-top: 35px;
+        width: 900px;
+        height: 200px;
+        display: flex;
+    }
+
+    .contactbox{
+        width: 300px;
+        height: 200px;
+        margin-right: 35px;
+        background-color: #fff;
+        border: 5px solid #fafaff;
+        border-radius: 5%;
+    }
+
+    .contactbox .iconos{
+        display: flex;
+        margin: 25px
+    }
+
+    .contactbox h3{
+        margin-top: -20%;
+        margin-left: 80px;
+        font-family: "Ubuntu", sans-serif;
+        font-size: 18px;
+        color: #1f3e72;
+        font-weight: bolder;
+    }
+    
+    .contactbox h4{
+        margin-top: -2%;
+        margin-left: 80px;
+        font-family: "Ubuntu", sans-serif;
+        color: #6d7b93;
+        font-size: 14px;
+        font-weight: 200;
+    }
+
+    .nurse {
+        margin-top: 250px;
+    }
+    
+    .person{
+        margin-top: 50px;
+        position: inherit;
+    }
+    
+    .mnurse{
+        margin-top: 50px;
+    }
+
+    .vaccine{
+        margin-top: 115px;
+        margin-left: 110px;
+    }
+
+    .t1 {
+        margin-top: 25%;
+        text-align: left;
+        padding-left: 100px;
+    }
+
+    .t2 {
+        margin-top: 170px;
+        text-align: left;
+        padding-left: 100px;
+    }
+
+    h1 {
+        font-size: 60px;
+        font-weight: bolder;
+        color: #1f3e72;
+    }
+
+    h2{
+        font-size: 40px;
+        font-weight: bolder;
+        color: #1f3e72;
+    }
+
+    p {
+        color: #6d7b93;
+        font-weight: 600;
+        font-size: 19px;
+    }
+
+    .items1 {
+        padding-top: 30px;
+        margin-left: 100px;
+        text-align: left;
+        display: flex;
+    }
+
+    .items2 {
+        padding-top: 130px;
+        margin-left: 100px;
+        text-align: left;
+    }
+
+    .icon {
+        margin-top: -8px;
+        margin-left: 5px;
+    }
+
+    .icon2 {
+        margin-top: -8px;
+        margin-left: 20px;
+    }
+
+    .icon3 {
+        margin-top: 40px;
+        margin-left: 40px;
+    }
+
+    .icon4 {
+        margin-top: -50px;
+        margin-left: 260px;
+    }
+
+    .icon5 {
+        margin-top: -95px;
+        margin-left: 480px;
+    }
+
+    .protect {
+        color: #1f3e72;
+        font-size: 15px;
+        margin-top: -10px;
+        margin-left: 20px;
+    }
+
+    .schedule {
+        color: #1f3e72;
+        font-size: 22px;
+        font-weight: bold;
+        margin-top: -30px;
+        margin-left: 40px;
+    }
+
+    .form-items {
+        position: absolute;
+        display: flex;
+        width: 880px;
+        height: 140px;
+        z-index: 30;
+        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0.85);
+        box-shadow: 0px 5px 5px 0px rgba(144, 163, 227, 0.6)
+    }
+
+    label {
+        font-family: 'Neometric';
+        position: absolute;
+        font-size: 22px;
+        font-weight: 500;
+        color: #8893a7;
+    }
+
+    .label1 {
+        margin-left: 15px;
+        margin-top: 35px;
+    }
+
+    .label2 {
+        margin-left: 15px;
+        margin-top: -26px;
+    }
+
+    .label3 {
+        margin-left: 15px;
+        margin-top: -50px;
+    }
+
+    input {
+        border: none;
+        outline: none;
+        font-weight: bold;
+        color: #1f3e72;
+        font-size: 25px;
+        position: absolute;
+        background-color: transparent;
+    }
+
+    .inp1 {
+        margin-left: 75px;
+        margin-top: 10px;
+    }
+
+    .inp2 {
+        margin-left: 295px;
+        margin-top: -15px;
+    }
+
+    .inp3 {
+        margin-left: 15px;
+        margin-top: -16px;
+    }
+
+    .sbm {
+        margin-left: 200px;
+        margin-top: -40px;
+    }
+
+    @media screen and (max-width: 1000px){
+        header .title {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            text-align: left;
+        }
+
+        header ul.shown {
+            width: 100%;
+            text-align: center;
+            display: block;
+            padding: 0 0;
+            margin: 0 0;
+        }
+
+        header ul.hide {
+            display: none;
+        }
+
+        header ul li {
+            display: block;
+            padding: 0 0;
+            margin: 0 0;
+            line-height: 5ex;
+        }
+        header {
+            float: none;
+            display: flex;
+            text-align: left;
+            flex-wrap: wrap;
+            padding: 35px 40px;
+            transition: all 0.6s ease;
+        }
+
+        header.sticky .menu-icon {
+            top: 9px;
+            transition: all 0.6s ease;
+        }
+
+        .menu-icon {
+            width: 50px;
+            height: 40px;
+            position: absolute;
+            display: block;
+            top: 35px;
+            right: 20px;
+            cursor: pointer;
+            padding: 0;
+            margin: 0;
+            border-style: solid;
+            border-color: #405fd7;
+            background-color: rgba(255, 255, 255, 0.8);
+            transition: all 0.6s ease;
+            border-radius: 25%;
+        }
+
+        .btn-hamburger {
+            position: inherit;
+            top: 4px;
+            left: 5px;
+            display: inline-block;
+            background-color: #405fd7;
+            height: 5px;
+            width: 35px;
+        }
+
+        .btn-hamburger2 {
+            position: absolute;
+            background-color: #405fd7;
+            height: 5px;
+            top: 15px;
+            left: 5px;
+            width: 35px;
+        }
+
+        .btn-hamburger3 {
+            position: inherit;
+            bottom: 4px;
+            left: 0;
+            display: inline-block;
+            background-color: #405fd7;
+            height: 5px;
+            left: 5px;
+            width: 35px;
+        }
+    }
+
+    .center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .foot {
+    background-color: #edf2fe;
+    min-height: 45vh;
+    }
+
+    .footc {
+        position: inherit;
+        display: flex;
+        justify-content: space-between;
+        width: 78vw;
+        min-height: 30vh;
+        padding-bottom: 1%;
+        margin-top: 4.2vw;
+    }
+
+    .vf {
+        color: #405fd7;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bolder;
+        font-size: 25px;
+    }
+
+    .vd {
+        position: inherit;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 35vw;
+    }
+
+    .goal {
+        font-size: 16px;
+        color: #8893a7;
+        font-weight: 600;
+    }
+
+    .ttl {
+        color: #1f3e72;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 20px;
+        font-weight: 800;
+    }
+
+    .lft {
+        margin-left: 500px;
+    }
+
+    .lft2 {
+        margin-left: 25px;
+    }
+    
+</style>
+<body>
+    <header>
+        <a href="#" class="title">Vaccination</a>
+        <div class="menu-icon">
+            <div class="btn-hamburger container-fluid"></div>
+            <div class="btn-hamburger2 container-fluid"></div>
+            <div class="btn-hamburger3 container-fluid"></div>
+        </div>
+        <ul id="tog" class="hide">
+            <li><a href="#">Database</a></li>
+            <li><a href="#">Education</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Regulation</a></li>
+            <li><a href="#" class="custom-btn btn-1">Hoax Buster</a></li>
+        </ul>
+    </header>
+    <section class="main">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="container-fluid col-sm-6 text-center first">
+                    <div class="t1">
+                        <h1>Fight Virus <br> With Vaccines</h1>
+                        <br>
+                        <p>
+                            Let's stop this pandemic by killing the virus <br>
+                            with a vaccine, don't let yourself and your <br> 
+                            family get infected
+                        </p>
+                    </div>
+                    <div class="items1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shield-check" width="20" height="20" viewBox="0 0 24 24" stroke-width="2.5" stroke="#ffec00" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M9 12l2 2l4 -4" />
+                            <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" />
+                        </svg>
+                        <p class="protect">Best protection</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon2 icon-tabler icon-tabler-star" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffec00" fill="yellow" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+                        </svg>
+                        <p class="protect">Selected Vaccines</p>
+                    </div>
+                    <div class="items2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#405fd7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <circle cx="12" cy="12" r="9" />
+                            <polyline points="12 7 12 12 15 15" />
+                        </svg>
+                        <p class="schedule">Schedule your vaccinations</p>
+                        <div class="form-items">
+                            <form action="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon3 icon-tabler icon-tabler-map-pin" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#405fd7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <circle cx="12" cy="11" r="3" />
+                                    <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+                                </svg>
+                                <label class="label1" for="location">Location</label><br>
+                                <input class="inp1" type="text" value="Jakarta Utara">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon4 icon-tabler icon-tabler-calendar-event" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#405fd7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <rect x="4" y="5" width="16" height="16" rx="2" />
+                                    <line x1="16" y1="3" x2="16" y2="7" />
+                                    <line x1="8" y1="3" x2="8" y2="7" />
+                                    <line x1="4" y1="11" x2="20" y2="11" />
+                                    <rect x="8" y="15" width="2" height="2" />
+                                </svg>
+                                <label class="label2" for="date">Date</label><br>
+                                <input class="inp2" type="text" value="08 July 2021">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon5 icon-tabler icon-tabler-vaccine" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#405fd7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M17 3l4 4" />
+                                    <path d="M19 5l-4.5 4.5" />
+                                    <path d="M11.5 6.5l6 6" />
+                                    <path d="M16.5 11.5l-6.5 6.5h-4v-4l6.5 -6.5" />
+                                    <path d="M7.5 12.5l1.5 1.5" />
+                                    <path d="M10.5 9.5l1.5 1.5" />
+                                    <path d="M3 21l3 -3" />
+                                </svg>
+                                <label class="label3" for="vt">Vaccine Type</label>
+                                <input class="inp3" type="text" value="Moderna">
+                                <input type="submit" class="sbm btn btn-primary btn-lg active" value="Submit">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid col-sm-6 second">
+                    <img class="nurse" src="nurse.png" alt="vacc" width="auto" height="700">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="container-fluid col-sm-0">
+                    <img class = "vaccine" src="vaccine.png" alt="VaccineDevelopers" width="auto" height="115">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container-fluid">
+            <div class="t2">
+                <h2>Why should i vaccine?</h2>
+                <br>
+                <p>
+                In order to avoid any doubts about getting the COVID-19<br>
+                vaccine, identify the following 4 benefits of COVID-19<br>
+                vaccination:
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="box">
+            <div class="cajita">
+                <svg xmlns="http://www.w3.org/2000/svg" class="iconos icon-tabler icon-tabler-adjustments-horizontal" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#405fd7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <circle cx="14" cy="6" r="2" />
+                    <line x1="4" y1="6" x2="12" y2="6" />
+                    <line x1="16" y1="6" x2="20" y2="6" />
+                    <circle cx="8" cy="12" r="2" />
+                    <line x1="4" y1="12" x2="6" y2="12" />
+                    <line x1="10" y1="12" x2="20" y2="12" />
+                    <circle cx="17" cy="18" r="2" />
+                    <line x1="4" y1="18" x2="15" y2="18" />
+                    <line x1="19" y1="18" x2="20" y2="18" />
+                </svg>
+            </div>
+            <h3>Minimize the<br>spread of viruses</h3>
+            <p>Vaccine has been proven<br>
+                effective to prevent someone
+                from getting infected with
+                Coronavirus</p>
+        </div>
+        <div class="box">
+            <div class="cajita">
+                <svg xmlns="http://www.w3.org/2000/svg" class="iconos icon-tabler icon-tabler-shield-check" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#3353d1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M9 12l2 2l4 -4" />
+                    <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" />
+                </svg>
+            </div>
+            <h3>Farming<br>antibodies</h3>
+            <p>COVID-19 vaccine proven to<br>
+                help shape antibody
+                response for immune system</p>
+        </div>
+        <div class="box">
+            <div class="cajita">
+                <svg xmlns="http://www.w3.org/2000/svg" class="iconos icon-tabler icon-tabler-users" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#3353d1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
+                </svg>
+            </div>
+            <h3>Protecting<br>people nearby</h3>
+            <p>The benefits of COVID-19<br>
+                vaccination are the vaccine
+                that we get can also help
+                protect people around us</p>
+        </div>
+        <div class="box">
+            <div class="cajita">
+                <svg xmlns="http://www.w3.org/2000/svg" class="iconos icon-tabler icon-tabler-trending-up" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#3353d1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <polyline points="3 17 9 11 13 15 21 7" />
+                    <polyline points="14 7 21 7 21 14" />
+                </svg>
+            </div>
+            <h3>Creating group<br>immunity</h3>
+            <p>COVID-19 vaccination is also<br>
+                beneficial for creating group
+                immunity or hard immunity</p>
+        </div>
+    </section>
+    <section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container-fluid col-sm-5"> 
+                <img class = "person" src="person.png" alt="person" width="auto" height="950">
+            </div>
+            <div class="container-fluid col-sm-7">
+                <div class="t2">
+                    <h2>Preparations Before Vaccine</h2>
+                    <br>
+                    <p>
+                        the succes of vaccines is strongly influenced by the <br>
+                        strength of the body's immune system. Therefore, there are <br>
+                        several things that can be tried to make the COVID-19 <br>
+                        vaccine work:
+                    </p>
+                </div>
+                <button class="accordion">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shield-x" width="28" height="28" viewBox="0 0 24 24" stroke-width="3" stroke="#3252d0" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" />
+                        <path d="M10 10l4 4m0 -4l-4 4" />
+                    </svg>
+                Avoid alcoholic beverages</button>
+                <div class="panel">
+                    <p>content</p>
+                </div>
+
+                <button class="accordion">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-square-x" width="28" height="28" viewBox="0 0 24 24" stroke-width="3" stroke="#3252d0" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <rect x="4" y="4" width="16" height="16" rx="2" />
+                        <path d="M10 10l4 4m0 -4l-4 4" />
+                    </svg>
+                Avoid stress</button>
+                <div class="panel">
+                    <p>stress has a profound effect on immune work. <br>
+                        Moreover, prolonged stress can increase cortisol <br>
+                        production and oxidative stress in the body.
+                    </p>
+                </div>
+                
+                <button class="accordion">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-google-analytics" width="28" height="28" viewBox="0 0 24 24" stroke-width="3" stroke="#3252d0" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <rect x="10" y="9" width="4" height="12" rx="1.105" />
+                        <rect x="17" y="3" width="4" height="18" rx="1.105" />
+                        <circle cx="5" cy="19" r="2" />
+                    </svg>
+                Eat healthy food
+                </button>
+                <div class="panel">
+                    <p>content</p>
+                </div>
+                <button class="accordion">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-square-check" width="28" height="28" viewBox="0 0 24 24" stroke-width="3" stroke="#3252d0" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <rect x="4" y="4" width="16" height="16" rx="2" />
+                        <path d="M9 12l2 2l4 -4" />
+                    </svg>
+                Get enough sleep
+                </button>
+                <div class="panel">
+                    <p>content</p>
+                </div>
+                <button class="accordion">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="28" height="28" viewBox="0 0 24 24" stroke-width="3" stroke="#3252d0" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                    </svg>
+                Exercise or physical activity
+                </button>
+                <div class="panel">
+                    <p>content</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="container-fluid col-sm-7">
+                    <div class="t2">
+                        <h2>Emergency contact</h2>
+                        <p>Contact one of the contacts below if you or your family fell <br>
+                            unwell and have similar symptoms such as Covid-19, make <br>
+                            sure yo also take care of yourself before reporting to us:
+                        </p>
+                    </div>
+                    <div class="marginhelper"></div>
+                        <div class="contentcontactbox">
+                            <div class="contactbox">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="iconos icon-tabler icon-tabler-phone-call" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#405fd7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+                                    <path d="M15 7a2 2 0 0 1 2 2" />
+                                    <path d="M15 3a6 6 0 0 1 6 6" />
+                                </svg>
+                                <h3>Call</h3>
+                                <h4>021.123.145.14</h4>
+                                <button class="custom-btn-1 btn-2">Call Now</button>
+                            </div>
+                            <div class="contactbox">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="iconos icon-tabler icon-tabler-message-circle" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#405fd7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />
+                                    <line x1="12" y1="12" x2="12" y2="12.01" />
+                                    <line x1="8" y1="12" x2="8" y2="12.01" />
+                                    <line x1="16" y1="12" x2="16" y2="12.01" />
+                                </svg>
+                                <h3>Chat</h3>
+                                <h4>021.123.145.14</h4>
+                                <button class="custom-btn-1 btn-2">Chat Now</button>
+                            </div>
+                        </div>
+                        <div class="contentcontactbox">
+                            <div class="contactbox">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="iconos icon-tabler icon-tabler-brand-skype" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#405fd7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M12 3a9 9 0 0 1 8.603 11.65a4.5 4.5 0 0 1 -5.953 5.953a9 9 0 0 1 -11.253 -11.253a4.5 4.5 0 0 1 5.953 -5.954a8.987 8.987 0 0 1 2.65 -.396z" />
+                                    <path d="M8 14.5c.5 2 2.358 2.5 4 2.5c2.905 0 4 -1.187 4 -2.5c0 -1.503 -1.927 -2.5 -4 -2.5s-4 -.997 -4 -2.5c0 -1.313 1.095 -2.5 4 -2.5c1.642 0 3.5 .5 4 2.5" />
+                                </svg>
+                                <h3>Call</h3>
+                                <h4>021.123.145.14</h4>
+                                <button class="custom-btn-1 btn-2">Video Call Now</button>
+                            </div>
+                            <div class="contactbox">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="iconos icon-tabler icon-tabler-mail" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#405fd7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                                    <polyline points="3 7 12 13 21 7" />
+                                </svg>
+                                <h3>Message</h3>
+                                <h4>021.123.145.14</h4>
+                                <button class="custom-btn-1 btn-2">Message Now</button>
+                            </div>
+                    </div>
+                </div>
+                <div class="container-fluid col-sm-5">
+                    <img class = "mnurse" src="mnurse.png" alt="mnurse" width="auto" height="894">
+                </div>
+            </div>
+        </div>
+        <div class="marginhelper"></div>
+    </section>
+    <section class="foot">
+        <div class="container-fluid center">
+            <footer>
+                <div class="footc">
+                    <div class="footch">
+                        <span class="vf">Vaccination</span>
+                        <p class="goal">Our goal is to help the <br>
+                            world free from the <br> 
+                            ongoing pandemic</p>
+                    </div>
+                    <div class="vd">
+                        <div>
+                            <span class="ttl">About</span>
+                            <p class="goal">About Us</p>
+                            <p class="goal">Features</p>
+                            <p class="goal">News & Blog</p>
+                        </div>
+                        <div>
+                            <span class="ttl">Company</span>
+                            <p class="goal">How We Work?</p>
+                            <p class="goal">Capital</p>
+                            <p class="goal">Security</p>
+                        </div>
+                        <div class="support">
+                            <span class="ttl">Support</span>
+                            <p class="goal">FAQs</p>
+                            <p class="goal">Support Center</p>
+                            <p class="goal">Contact Us</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="last">
+                    <span class="goal">&copy; 2021 Vaccination. All rights reserved</span>
+                    <span class="goal lft">Terms & Agreements</span>
+                    <span class="goal lft2">Privacy Policy</span>
+                </div>
+            </footer>
+        </div>
+    </section>
+    <script>
+        (() => {
+            window.onload = function() {
+                var btn = document.querySelector(".menu-icon");
+                var menu = document.querySelector("#tog");
+                btn.onclick = function() {
+                    menu.classList.toggle("hide")
+                    menu.classList.toggle("shown")
+                };
+                window.addEventListener("scroll", function() {
+                    var header = document.querySelector("header");
+                    header.classList.toggle("sticky", window.scrollY > 0);
+                })
+            }
+        })();
+
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+        /* Toggle between adding and removing the "active" class,
+        to highlight the button that controls the panel */
+        this.classList.toggle("active");
+
+    /* Toggle between hiding and showing the active panel */
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    });
+    }
+    </script>
+</body>
+</html>
